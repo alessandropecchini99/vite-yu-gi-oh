@@ -10,7 +10,10 @@ export default {
   <div class="card">
     <img :src="cardData.card_images[0].image_url" :alt="cardData.name" />
     <div class="title">{{ cardData.name }}</div>
-    <div class="species">{{ cardData.type }}</div>
+    <div v-if="cardData.archetype" class="species">
+      {{ cardData.archetype }}
+    </div>
+    <div v-else class="species">none</div>
   </div>
 </template>
 

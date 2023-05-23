@@ -10,7 +10,7 @@ export default {
   <div class="card">
     <img :src="cardData.card_images[0].image_url" :alt="cardData.name" />
     <div class="title">{{ cardData.name }}</div>
-    <div class="species">{{ cardData.archetype }}</div>
+    <div class="species">{{ cardData.type }}</div>
   </div>
 </template>
 
@@ -27,15 +27,18 @@ export default {
 
   img {
     width: 100%;
+    flex-basis: 70%;
   }
 
   .title {
+    flex-basis: 15%;
     margin-top: 0.5em;
     margin-bottom: 0.25em;
     color: white;
   }
 
   .species {
+    flex-basis: 15%;
     margin-top: 0.25em;
     margin-bottom: 0.5em;
   }

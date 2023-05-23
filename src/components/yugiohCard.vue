@@ -21,7 +21,7 @@ export default {
   align-items: center;
 
   width: calc((100% / 5) - 2em);
-  height: 330px;
+  height: 100%;
   background-color: #d48f38;
   text-align: center;
 

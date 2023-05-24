@@ -27,10 +27,15 @@ export default {
       axios
         .get(`https://db.ygoprodeck.com/api/v7/archetypes.php`)
         .then((response) => (this.store.archetypesList = response.data));
-      this.store.archetypesList.push(`none`);
     },
     dataFromApi(searchStr) {
-      console.log(searchStr);
+      axios
+        .get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?`, {
+          params: {
+            archetype: searchStr,
+          },
+        })
+        .then((response) => (this.store.cardList = response.data.data));
     },
   },
   created() {
@@ -46,7 +51,7 @@ export default {
   </header>
 
   <main>
-    <appSearch @search="dataFromApi" />
+    <appSearch @change="dataFromApi" @reset="loadApi" />
     <yugiohList />
     <appLoader v-if="store.cardList.length === 0" />
   </main>

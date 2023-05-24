@@ -10,13 +10,16 @@ export default {};
 
 <style lang="scss" scoped>
 div {
+  height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .rotate-icon {
-  animation: rotate 2s linear infinite;
+  animation: rotate 1s linear infinite;
   color: black;
+  font-size: 10em;
 }
 
 @keyframes rotate {

@@ -12,9 +12,9 @@ export default {
 
 <template>
   <div class="searchBar">
-    <input type="text" placeholder="Cerca una carta!" v-model="searchStr" />
-    <select name="" id="">
-      <option value="0" selected>Select status</option>
+    <!-- <input type="text" placeholder="Cerca una carta!" v-model="searchStr" /> -->
+    <select v-model="searchStr" @change="$emit(`change`, searchStr)">
+      <option selected value="">Seleziona tipo</option>
       <option
         v-for="type in store.archetypesList"
         :key="type.archetype_name"
@@ -23,8 +23,8 @@ export default {
         {{ type.archetype_name }}
       </option>
     </select>
-    <button @click="$emit(`search`, searchStr)">Cerca</button>
-    <button>Reset</button>
+    <!-- <button @click="$emit(`search`, searchStr)">Cerca</button> -->
+    <button @reset="$emit(`reset`)">Reset</button>
   </div>
 </template>
 
@@ -39,7 +39,6 @@ export default {
   gap: 1em;
   height: 4em;
 
-  input,
   select {
     padding: 5px 10px;
     border: 0px;

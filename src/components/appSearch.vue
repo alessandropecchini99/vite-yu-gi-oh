@@ -7,6 +7,9 @@ export default {
     };
   },
   methods: {
+    // onSearch() {
+    //   this.$emit(`searched`);
+    // },
     onChange(event) {
       this.$emit(`filter`, event.target.value);
     },
@@ -19,11 +22,16 @@ export default {
 
 <template>
   <div class="searchBar">
-    <!-- <input type="text" placeholder="Cerca una carta!" v-model="searchStr" /> -->
+    <!-- <input
+      type="text"
+      placeholder="Cerca una carta!"
+      @keyup.enter="onSearch"
+      v-model="store.searchStr"
+    /> -->
     <select
       :value="store.archetypesList.archetype_name"
       @change="onChange"
-      v-model="this.store.archetypeStr"
+      v-model="store.archetypeStr"
     >
       <option selected value="">Tutte le carte</option>
       <option

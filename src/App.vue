@@ -28,6 +28,15 @@ export default {
         .get(`https://db.ygoprodeck.com/api/v7/archetypes.php`)
         .then((response) => (this.store.archetypesList = response.data));
     },
+    // search() {
+    //   axios
+    //     .get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?`, {
+    //       params: {
+    //         name: this.store.cardList.includes(searchStr),
+    //       },
+    //     })
+    //     .then((response) => (this.store.cardList = response.data.data));
+    // },
     filtro(type) {
       axios
         .get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?`, {
@@ -59,6 +68,7 @@ export default {
   </header>
 
   <main>
+    <!-- @searched="search" -->
     <appSearch @filter="filtro" @reset="resetCard" />
     <yugiohList />
     <appLoader v-if="store.cardList.length === 0" />

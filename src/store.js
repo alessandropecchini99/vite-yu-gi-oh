@@ -4,4 +4,5 @@ export const store = reactive({
   cardList: [],
   archetypesList: [],
   archetypeStr: ``,
+  searchStr: ``,
 });

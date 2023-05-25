@@ -3,9 +3,16 @@ import { store } from "../store";
 export default {
   data() {
     return {
-      searchStr: ``,
       store,
     };
+  },
+  methods: {
+    onChange(event) {
+      this.$emit(`filter`, event.target.value);
+    },
+    onReset() {
+      this.$emit(`reset`);
+    },
   },
 };
 </script>
@@ -13,8 +20,12 @@ export default {
 <template>
   <div class="searchBar">
     <!-- <input type="text" placeholder="Cerca una carta!" v-model="searchStr" /> -->
-    <select v-model="searchStr" @change="$emit(`change`, searchStr)">
-      <option selected value="">Seleziona tipo</option>
+    <select
+      :value="store.archetypesList.archetype_name"
+      @change="onChange"
+      v-model="this.store.archetypeStr"
+    >
+      <option selected value="">Tutte le carte</option>
       <option
         v-for="type in store.archetypesList"
         :key="type.archetype_name"
@@ -23,8 +34,7 @@ export default {
         {{ type.archetype_name }}
       </option>
     </select>
-    <!-- <button @click="$emit(`search`, searchStr)">Cerca</button> -->
-    <button @reset="$emit(`reset`)">Reset</button>
+    <button @click="onReset">Reset</button>
   </div>
 </template>
 

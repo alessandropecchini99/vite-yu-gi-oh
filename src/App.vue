@@ -22,7 +22,7 @@ export default {
   methods: {
     loadApi() {
       axios
-        .get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=30&offset=0`)
+        .get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=0`)
         .then((response) => (this.store.cardList = response.data.data));
       axios
         .get(`https://db.ygoprodeck.com/api/v7/archetypes.php`)
@@ -32,7 +32,7 @@ export default {
       axios
         .get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?`, {
           params: {
-            num: 30,
+            num: 100,
             offset: 0,
             archetype: this.store.archetypeStr,
           },
@@ -41,7 +41,7 @@ export default {
     },
     resetCard() {
       axios
-        .get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=30&offset=0`)
+        .get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=0`)
         .then((response) => (this.store.cardList = response.data.data));
       this.store.archetypeStr = ``;
     },
